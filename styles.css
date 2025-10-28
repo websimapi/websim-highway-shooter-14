@@ -9,15 +9,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vh; /* Changed from 100dvh for consistency, vh is fine with flexbox centering */
 }
 
 #game-container {
     position: relative;
     overflow: hidden;
-    /* This logic robustly fits a 9:16 aspect ratio container into any viewport. */
-    width: min(100vw, calc(100vh * 9 / 16));
-    height: min(100vh, calc(100vw * 16 / 9));
+    /* New, simpler, and more robust sizing logic */
+    aspect-ratio: 9 / 16;
+    height: 100vh;
+    max-height: 100vh;
+    max-width: calc(100vh * 9 / 16);
 }
 
 canvas {

@@ -30,18 +30,24 @@ export default class InputHandler {
 
         const canvas = document.getElementById('game-canvas');
 
+        const getGameX = (screenX) => {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = this.game.width / rect.width;
+            return (screenX - rect.left) * scaleX;
+        };
+
         const handleDragStart = (e) => {
             this.isDragging = true;
-            this.dragStartX = getEventX(e);
-            this.touchStartX = getEventX(e);
+            this.dragStartX = getGameX(getEventX(e));
+            this.touchStartX = getEventX(e); // Keep screen coords for tap detection
             this.touchStartY = getEventY(e);
             this.playerStartX = this.game.player.x;
         };
 
         const handleDragMove = (e) => {
             if (this.isDragging) {
-                const currentX = getEventX(e);
-                const dx = currentX - this.dragStartX;
+                const currentGameX = getGameX(getEventX(e));
+                const dx = currentGameX - this.dragStartX;
                 this.targetX = this.playerStartX + dx + this.game.player.width / 2;
                 this.clampTargetX();
             }

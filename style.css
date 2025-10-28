@@ -14,11 +14,12 @@ body {
 #game-container {
     position: relative;
     overflow: hidden;
-    /* New sizing logic */
-    width: calc(var(--vh, 100vh) * (540 / 960));
-    height: var(--vh, 100vh);
-    max-width: var(--vw, 100vw);
-    max-height: calc(var(--vw, 100vw) * (960 / 540));
+    /* New, simplified sizing logic */
+    width: 100%;
+    height: 100%;
+    max-width: min(100vw, calc(100vh * (540 / 960)));
+    max-height: min(100vh, calc(100vw * (960 / 540)));
+    aspect-ratio: 540 / 960;
 }
 
 canvas {

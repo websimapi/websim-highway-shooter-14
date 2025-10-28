@@ -142,6 +142,8 @@ window.addEventListener('load', () => {
     startButton.addEventListener('click', startGame);
     restartButton.addEventListener('click', startGame);
 
+    // This function is no longer needed with the new CSS.
+    /*
     function resizeGame() {
         const ww = window.innerWidth;
         const wh = window.innerHeight;
@@ -151,4 +153,5 @@ window.addEventListener('load', () => {
 
     window.addEventListener('resize', resizeGame);
     resizeGame();
+    */
 });

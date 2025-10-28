@@ -145,22 +145,8 @@ window.addEventListener('load', () => {
     function resizeGame() {
         const ww = window.innerWidth;
         const wh = window.innerHeight;
-        const windowAspect = ww / wh;
-
-        let newWidth, newHeight;
-
-        if (windowAspect > ASPECT_RATIO) {
-            // window is wider than game
-            newHeight = wh;
-            newWidth = newHeight * ASPECT_RATIO;
-        } else {
-            // window is taller than game
-            newWidth = ww;
-            newHeight = newWidth / ASPECT_RATIO;
-        }
-
-        gameContainer.style.width = `${newWidth}px`;
-        gameContainer.style.height = `${newHeight}px`;
+        gameContainer.style.setProperty('--vh', `${wh}px`);
+        gameContainer.style.setProperty('--vw', `${ww}px`);
     }
 
     window.addEventListener('resize', resizeGame);
